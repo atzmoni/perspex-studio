@@ -86,6 +86,8 @@ const OCCASIONS = [
   { id: 'israelmap', n: 'מפת ישראל ודגל', sub: 'פרספקס שחור או שקוף' },
   { id: 'yahrzeit', n: 'נר נשמה והנצחה', sub: 'תמונה, הקדשה ומגש נרות' },
   { id: 'shabbat', n: 'נרות שבת', sub: 'מגש זהב לשני פמוטים' },
+  { id: 'graduation', n: 'סיום לימודים', sub: 'לוח הוקרה עם כוכב זהב' },
+  { id: 'thanks', n: 'תודה לצוות', sub: 'לוח מלבני, כותרת זהב ושמות' },
 ];
 function template(id, w) {
   const base = { shape: 'rrect', w, lock: true, h: 0, t: 10, mat: 'clear', base: { type: 'wood', w: 0, d: 60, h: 24, plaque: '', led: '#7cc4ff', ledOn: false }, white: true };
@@ -103,6 +105,8 @@ function template(id, w) {
       T_('לעילוי נשמת אשת חיל', { fx: 0.69, fy: 0.33, s: 0.042, font: 'Frank Ruhl Libre', weight: 700, color: '#2a1c10' }), T_('שרה כהן ז״ל', { fx: 0.69, fy: 0.45, s: 0.075, font: 'Frank Ruhl Libre', weight: 900, color: '#2a1c10' }), T_('בת אסתר ואברהם', { fx: 0.69, fy: 0.56, s: 0.04, font: 'Frank Ruhl Libre', weight: 700, color: '#2a1c10' }), T_('נלב״ע ה׳ בחשוון תשפ״ז', { fx: 0.69, fy: 0.65, s: 0.04, font: 'Frank Ruhl Libre', weight: 700, color: '#2a1c10' })] });
     case 'shabbat': return Object.assign(base, { shape: 'arabesque', w: Math.max(240, Math.round(w * 1.4)), t: 8, base: { ...base.base, type: 'shabbat', plaque: 'שמור וזכור בדיבור אחד' }, els: [SYM('arabesque-line', { fy: 0.5, s: 1, color: '#d6b046', fin: 'mirror' }), SYM('shabbat-candles', { fy: 0.36, s: 0.24, color: '#b8902c' }), T_('לכבוד שבת קודש', { fy: 0.66, s: 0.08, font: 'Suez One', weight: 400, color: '#1c2c5b' }), T_('משפחת לוי', { fy: 0.8, s: 0.06, font: 'Frank Ruhl Libre', weight: 900, color: '#a8812c' })] });
     case 'israelmap': return Object.assign(base, { shape: 'israel-map', w: Math.round(w * 0.5), t: 10, mat: 'clear', base: { ...base.base, type: 'black', d: 60, h: 24 }, els: [SYM('rect', { fy: 0.17, fx: 0.56, s: 0.36, color: '#ffffff', fin: 'back' }), SYM('flag-print', { fy: 0.17, fx: 0.56, s: 0.36, color: '#0038b8', fin: 'back' }), T_('ישראל ישראלי\nאבירי הדרך', { fy: 0.38, fx: 0.5, s: 0.07, font: 'Frank Ruhl Libre', weight: 900, color: '#a8812c', fin: 'back' }), T_('בהוקרה ובהערכה\nעל מסירות\nותרומה רבה', { fy: 0.58, fx: 0.47, s: 0.045, font: 'Assistant', weight: 700, color: '#1c2c5b', fin: 'back' })] });
+    case 'graduation': return Object.assign(base, { shape: 'rrect', t: 10, base: { ...base.base, type: 'black' }, els: [SYM('dstar', { fy: 0.2, s: 0.18, color: '#d6b046', fin: 'mirror' }), T_('סיום לימודים', { fy: 0.42, s: 0.085, font: 'Suez One', weight: 400, color: '#d6b046', fin: 'mirror' }), T_('בהצלחה ובהמשך דרך מלאה במעש', { fy: 0.6, s: 0.05, font: 'Assistant', weight: 600, color: '#ffffff' }), T_('ישראל ישראלי\nתשפ״ז', { fy: 0.8, s: 0.05, font: 'Heebo', weight: 700, color: '#d6b046' })] });
+    case 'thanks': return Object.assign(base, { shape: 'rrect-wide', t: 10, base: { ...base.base, type: 'wood' }, els: [T_('תודה לצוות', { fy: 0.24, s: 0.09, font: 'Suez One', weight: 400, color: '#1c2c5b' }), T_('על מסירות ועל כל שעה שהשקעתם', { fy: 0.5, s: 0.05, font: 'Assistant', weight: 700 }), T_('שרה כהן\nדני לוי\nנועה אברהם', { fy: 0.74, s: 0.042, font: 'Heebo', weight: 600, color: '#a8812c' })] });
     default: return Object.assign(base, { shape: 'rrect', els: [SYM('dstar', { fy: 0.14, s: 0.13 }), T_('תעודת הוקרה', { fy: 0.3, s: 0.1, weight: 900 }), T_('ישראל ישראלי', { fy: 0.48, s: 0.085, font: 'Heebo', weight: 700, color: '#0038b8' }), T_('על מסירות, מקצועיות\nותרומה יוצאת דופן', { fy: 0.66, s: 0.05, font: 'Assistant', weight: 600 }), T_('תשפ״ז', { fy: 0.86, s: 0.04, font: 'Assistant' })] });
   }
 }
