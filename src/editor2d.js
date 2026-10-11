@@ -216,6 +216,8 @@ function e2Props() {
   h += `<div class="e2pc"><h4>גימור</h4><div class="e2fin">${Object.entries(FIN).map(([k, n]) => `<button data-pa="fin" data-v="${k}" aria-pressed="${e.fin === k}">${n}</button>`).join('')}</div></div>
     <div class="e2pc"><h4>סיבוב <small>${Math.round(e.rot || 0)}°</small></h4><input type="range" data-p="rot" min="-180" max="180" step="1" value="${e.rot || 0}"></div>
     <div class="e2pc"><h4>מיקום ושכבה</h4><div class="e2grid">
+      <button data-pa="aL">יישור לשמאל</button><button data-pa="aR">יישור לימין</button>
+      <button data-pa="aT">יישור למעלה</button><button data-pa="aB">יישור למטה</button>
       <button data-pa="ch">מרכז אופקי</button><button data-pa="cv">מרכז אנכי</button>
       <button data-pa="up">שכבה קדימה</button><button data-pa="down">שכבה אחורה</button>
       <button data-pa="dup">שכפול</button><button data-pa="del" class="dng">מחיקה</button></div></div>`;
@@ -233,6 +235,7 @@ function e2PropClick(ev) {
   else if (a === 'align') { el.align = v; changed(); }
   else if (a === 'fin') { el.fin = v; changed(); }
   else if (a === 'fx') { openMemorialFx(el); return; }
+  else if (a[0] === 'a' && a.length === 2) { const b = boxes[el.id]; if (!b) return; if (a === 'aL') el.fx -= b.x0; else if (a === 'aR') el.fx += 1 - b.x1; else if (a === 'aT') el.fy -= b.y0; else el.fy += 1 - b.y1; changed(); }
   else if (a === 'ch') { el.fx = 0.5; changed(); } else if (a === 'cv') { el.fy = 0.5; changed(); }
   else if (a === 'up' || a === 'down' || a === 'dup' || a === 'del') { ed2Cmd(a); return; }
   renderPanel();
